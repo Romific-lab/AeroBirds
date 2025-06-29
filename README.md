@@ -11,13 +11,29 @@ AeroBird first extracts a frame from a video stream from a chunk of five (can be
 It then goes through a pre-trained custom light weight bird detector CNN trained on Airbirds dataset to then classify if a mask is a bird or not.
 
 ### Libraries
-To run Aerobirds, the following libraries are needed:
+The following libraries are used:
 
 ```bash
 Python 3.7+
-OpenCV
-NumPy
-PyTorch
+import os
+import torch
+import torch.nn as nn
+import torch.optim as optim
+import logging
+import time
+import json
+from pathlib import Path
+
+import numpy as np
+import matplotlib.pyplot as plt
+from PIL import Image
+import cv2
+
+from torch.utils.data import DataLoader, random_split
+from torchvision import datasets, transforms
+from sklearn.metrics import precision_recall_curve, classification_report, confusion_matrix
+
+from torchcam.methods import GradCAM
 ```
 
 ### Test
